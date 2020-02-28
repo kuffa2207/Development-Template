@@ -1,5 +1,5 @@
 #include <gtest/gtest.h>
-#include "add.h"
+#include "racional.h"
 
 TEST(Addition, CanAddTwoPositiveNumbers) {
   EXPECT_EQ(add(5, 5), 10);
