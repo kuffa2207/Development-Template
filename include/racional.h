@@ -7,10 +7,10 @@
 #include <clocale>     
 #include <math.h>
 using namespace std;
-int x, y;
 class number
 {
 public:
+	int x, y;
 	int numerator; //числитель
 	int denominator; //знаменатель
 public:
@@ -20,7 +20,16 @@ public:
 	number(const number& ss);
 	~number() {};
 	number Add(const number& C);
-
+	friend bool operator==(const number& left, const number& right) {
+		bool res = 0;
+		if (left.numerator == right.numerator && left.denominator == right.denominator) {
+			res = 1;
+		}
+		else {
+			res = 0;
+		}
+		return res;
+	}
 	number operator +(number& C);
 	number operator -(number& C);
 	number operator *(number& C);

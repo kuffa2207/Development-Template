@@ -1,3 +1,11 @@
+#include "racional.h"
+#include <iostream>
+#include <fstream>
+#include <clocale>     
+#include <math.h>
+
+using namespace std;
+
 int max(int x, int y)
 {
 	return (x > y) ? x : y;
@@ -107,7 +115,7 @@ void number::cancellation()
 	return;
 }
 void number::inPut() {
-	cout << "Числетель = ";
+	cout << "Числитель = ";
 	cin >> numerator;
 back:
 	cout << "Знаменатель = ";
