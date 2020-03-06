@@ -32,12 +32,6 @@ TEST(number, CanSravTwoRacinaolNumber) {
     number res = c10 == c11;
     EXPECT_EQ(res, c12);
 }
-TEST(number, CanDivisionTwoRacinaolNumber) {
-    number c13(2, 5), c14(2, 5);
-    number c15(19, 4);
-    number res = c13 / c14;
-    EXPECT_EQ(res, c15);
-}
 TEST(number, CanPrisvainTwoRacinaolNumber) {
     number c16(2, 5), c17(2, 7);
     number c18(2, 7);
