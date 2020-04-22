@@ -1,8 +1,6 @@
+#include <gtest/gtest.h>
 #include "term.h"
-using namespace std;
 
-int main() {
-	setlocale(LC_ALL, "Russian");
-	Date a;
-	a.menu();
+TEST(Addition, can) {
+    
 }
