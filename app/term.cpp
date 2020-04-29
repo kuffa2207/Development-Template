@@ -152,15 +152,15 @@ void Term::menu() {
                 }
                 if (vid2 == 1) {
                     month = inpmonth();
-                    show_sredm(month);
+                    show_srmonth(month);
                 }
                 if (vid2 == 2) {
-                    sredall(0);
+                    sredall();
                 }
             }
         }
         if (w == 4) {
-            firstdata();
+            onedate();
         }
         if (w == 5) {
             info();
@@ -171,7 +171,7 @@ void Term::menu() {
     }
 }
 
-void Term::firstdata() {
+void Term::onedate() {
     cout << endl << "Ќачальна€ дата первого наблюдени€: ";
     if (num[0].YMD[0] < 10) {
         cout << "0" << num[0].YMD[0];
@@ -237,6 +237,8 @@ void Term::outfile() {
         }
     }
     out.close();
+    getchar();
+    getchar();
 }
 
 int Term::inpmonth() {
@@ -253,77 +255,75 @@ int Term::inpmonth() {
     return mon.YMD[1];
 }
 
-
-int Term::sredall(int tr) {
+int Term::sredall(int rez) {
     if (count == 0) {
         count++;
     }
     int k = 0;
     int res = 0;
-    int result = 0;
+    int rez = 0;
     int f;
-    int* temp = new int;
+    int* steep = new int;
     for (int i = 0; i < count; i++) {
-        temp[k] = num[i].T;
+        steep[k] = num[i].T;
         k++;
         f = i;
     }
     if (count >= 2) {
         for (int i = 0; i < k; i++) {
-            res = res + temp[i];
+            res = res + steep[i];
         }
         if (k > 1) {
             res = res / k;
-            result = res;
+            rez = res;
         }
         else {
             for (int i = 0; i < count; i++) {
-                result = num[i].T;
+                rez = num[i].T;
             }
         }
     }
     else {
         for (int i = 0; i < count; i++) {
-            result = num[i].T;
+            rez = num[i].T;
         }
     }
     if (res != 0) {
-        cout << "—редн€€ температура: " << result << endl;
+        cout << "—редн€€ температура: " << rez << endl;
     }
     else {
         cout << "Ќаблюдений нет" << endl;
     }
-    return tr;
 }
 
-int Term::sredm(int month) {
+int Term::srmonth(int month) {
     if (count == 0) {
         count++;
     }
     int k = 0;
     int res = 0;
-    int result = 0;
+    int rez = 0;
     int f;
-    int* temp = new int;
+    int* steep = new int;
     for (int i = 0; i < count; i++) {
         if (month == num[i].YMD[1]) {
-            temp[k] = num[i].T;
+            steep[k] = num[i].T;
             k++;
             f = i;
         }
     }
     if (count >= 2) {
         for (int i = 0; i < k; i++) {
-            res = res + temp[i];
+            res = res + steep[i];
         }
         if (k > 1) {
             res = res / k;
-            result = res;
+            rez = res;
         }
         else {
             for (int i = 0; i < count; i++) {
                 if (month == num[i].YMD[1]) {
-                    result = num[i].T;
+                    rez = num[i].T;
                 }
             }
         }
@@ -331,15 +331,15 @@ int Term::sredm(int month) {
     else {
         for (int i = 0; i < count; i++) {
             if (month == num[i].YMD[1]) {
-                result = num[i].T;
+                rez = num[i].T;
             }
         }
     }
-    return result;
+    return rez;
 }
 
-void Term::show_sredm(int month) {
-    int ress = sredm(month);
+void Term::show_srmonth(int month) {
+    int ress = srmonth(month);
     if (ress != 0) {
         cout << "—редн€€ температура за мес€ц: " << ress << endl << endl;
     }
