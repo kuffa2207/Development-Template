@@ -55,7 +55,8 @@ public:
         return res;
     }
     void setdate(Date new_YMD);
-    void info();
+    void showsredall(int tr);
+    int info();
     int sredm(int month);
     void infile();
     void outfile();

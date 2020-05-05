@@ -155,7 +155,7 @@ void Term::menu() {
                     show_sredm(month);
                 }
                 if (vid2 == 2) {
-                    sredall(0);
+                    showsredall(0);
                 }
             }
         }
@@ -172,7 +172,6 @@ void Term::menu() {
 }
 
 void Term::firstdata() {
-    cout << endl << "Начальная дата первого наблюдения: ";
     if (num[0].YMD[0] < 10) {
         cout << "0" << num[0].YMD[0];
     }
@@ -188,8 +187,6 @@ void Term::firstdata() {
     cout << ":" << num[0].YMD[2] << endl;
     cout << "Время в часах: " << num[0].YMD[3] << endl;
     cout << "Температура за этот период: " << num[0].T << endl << endl;
-    getchar();
-    getchar();
 }
 
 void Term::infile() {
@@ -253,6 +250,15 @@ int Term::inpmonth() {
     return mon.YMD[1];
 }
 
+void Term::showsredall(int tr) {
+    int ress = sredall(tr);
+    if (ress != 0) {
+        cout << "Средняя температура за все время" << ress << endl << endl;
+    }
+    else {
+        cout << "Нет наблюдений нет" << endl << endl;
+    }
+}
 
 int Term::sredall(int tr) {
     if (count == 0) {
@@ -287,13 +293,7 @@ int Term::sredall(int tr) {
             result = num[i].T;
         }
     }
-    if (res != 0) {
-        cout << "Средняя температура: " << result << endl;
-    }
-    else {
-        cout << "Наблюдений нет" << endl;
-    }
-    return tr;
+    return result;
 }
 
 int Term::sredm(int month) {
@@ -400,7 +400,7 @@ int Term::returnhour() {
     return get.YMD[3];
 }
 
-void Term::info() {
+int Term::info() {
 
     cout << endl;
     int* arr = new int[count];
@@ -418,8 +418,7 @@ void Term::info() {
             cout << endl << "Наблюдений нет" << endl;
         }
     }
-    getchar();
-    getchar();
+    return true;
 }
 
 
