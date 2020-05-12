@@ -12,10 +12,6 @@ TEST(Thermpometr, CAN_USE_COPY) {
     EXPECT_EQ(termts, rc);
 }
 
-TEST(Thermpometr, CAN_USE_FIRSTDATA) {
-    Term termts;
-    ASSERT_ANY_THROW(termts.firstdata());
-}
 
 TEST(Thermpometr, CAN_USE_CONST1) {
     int* YMD = new int[4];
