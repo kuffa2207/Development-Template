@@ -1,6 +1,37 @@
-#ifndef INCLUDE_ADD_H_
-#define INCLUDE_ADD_H_
+#pragma once
+#include <iostream>
+#include <clocale>
+#include <math.h>
+#include <string.h>
+#include <conio.h>
+#include <fstream>
+#include <cstdlib>
+#include <Windows.h>
+#include <iomanip>
 
-int add(int x, int y);
+using namespace std;
 
-#endif  // INCLUDE_ADD_H_
+class Textred {
+private:
+    int x, y, len;
+public:
+    Textred();
+    Textred(const Textred& c);
+    Textred(int _x, int _y);
+    int menu();
+    void start();
+    void show(char* str);
+    void text(char* str, int hir1);
+    bool operator==(const Textred& c);
+    friend bool operator==(const Textred& left, const Textred& right) {
+        bool res = false;
+        if (left.x == right.x && left.y == right.y) {
+            res = true;
+        }
+        else {
+            res = false;
+        }
+        return res;
+    }
+};
+

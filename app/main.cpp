@@ -1,6 +1,14 @@
 #include "add.h"
-#include <iostream>
+using namespace std;
+
 
 int main() {
-  std::cout << "5 + 5 = " << add(5, 5) << std::endl;
+        setlocale(LC_ALL, "Russian");
+        SetConsoleTitle("Текстовый Редактор");
+        char str[400];
+        Textred a;
+        int x1 = a.menu();
+        a.start();
+        a.text(str, x1);
+        a.show(str);
 }

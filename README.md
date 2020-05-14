@@ -6,7 +6,7 @@
 * Continuous integration: travis-ci
 
 
-## Merging an upstream repository into your fork (master branch)
+## Merging an upstream repository into your fork (Textred branch)
 ```
  git checkout master
  git pull https://github.com/UsovaMA/Development-Template.git master
