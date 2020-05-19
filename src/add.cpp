@@ -31,12 +31,16 @@ int Textred::menu() {
     int x, y, x1, y1;
     HWND window_header = GetConsoleWindow();
     SetWindowPos(window_header, HWND_TOP, 200, 200, 600, 230, NULL);
-    do {
-        cout << "Положение по X не более 1500 = ";
-        cin >> x;
-        cout << "Положение по Y не более 1000 = ";
-        cin >> y;
-    } while (x > 1500 || y>1000);
+    cout << "Положение по X не более 1500 = ";
+    cin >> x;
+    if (x > 1500 || x < 0) {
+        throw std::logic_error("Input error: wrong input parametrs to size of window!");
+    }
+    cout << "Положение по Y не более 1000 = ";
+    cin >> y;
+    if (y > 1000 || y < 0) {
+        throw std::logic_error("Input error: wrong input parametrs to size of window!");
+    }
     SetWindowPos(window_header, HWND_TOP, x, y, 600, 230, NULL);
     do {
         cout << "1) Ввести размер окна текстового редактора самостоятельно" << endl;
@@ -129,25 +133,39 @@ void Textred::text(char* str, int _x) {
         }
     }
 }
- 
+void Textred::main() {
+    Textred a;
+    char str[400];
+    int x1 = a.menu();
+    a.start();
+    a.text(str, x1);
+    system("CLS");
+    a.show(str);
+}
 
 void Textred::show(char* str) {
     int s;
     do {
         cout << "Ваш текст:" << endl;
+        cout << "________________________________" << endl;
         cout << str << "." << endl;
+        cout << "________________________________" << endl;
+        cout << endl;
         cout << "1) Скрыть редактор" << endl;
-        cout << "2) Завершить работу";
+        cout << "2) Ввести заново" << endl;
+        cout << "3) Завершить работу" << endl;
         cin >> s;
-        if (s != 1 || s != 2) {
-            system("CLS");
-        }
         if (s == 1) {
             HWND hWnd = GetConsoleWindow();
             ShowWindow(hWnd, SW_MINIMIZE);
         }
-    } while (s != 2);
-    if (s == 2) {
-        system("pause");
-    }
+        if (s == 2) {
+            cout << "Повторный ввод" << endl;
+            system("CLS");
+            main();
+        }
+        if (s == 3) {
+            system("pause");
+        }
+    } while (s != 3);
 }

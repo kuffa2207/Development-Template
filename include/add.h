@@ -22,6 +22,7 @@ public:
     void start();
     void show(char* str);
     void text(char* str, int hir1);
+    void main();
     bool operator==(const Textred& c);
     friend bool operator==(const Textred& left, const Textred& right) {
         bool res = false;
