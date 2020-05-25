@@ -1,6 +1,7 @@
-#include "add.h"
-#include <iostream>
-
+#include "app.h"
 int main() {
-  std::cout << "5 + 5 = " << add(5, 5) << std::endl;
+    setlocale(LC_CTYPE, "Russian");
+    BullAndCow start;
+    start.bullCow();
+    return 0;
 }

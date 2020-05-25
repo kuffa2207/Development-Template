@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.1)
 
-project(MyProject)
+project(BullsAndCows)
 
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -18,6 +18,7 @@ endif()
 
 set(LINTING_APP ${CMAKE_SOURCE_DIR}/3rdparty/utils/cpplint.py)
 set(LINTING_COMMAND python ${LINTING_APP} --extensions=cpp,hpp,h,cc,c)
+set (CMAKE_CXX_FLAGS "-Wall ${CMAKE_CXX_FLAGS}")
 
 include_directories(include)
 
