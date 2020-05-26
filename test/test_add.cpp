@@ -1,14 +1,24 @@
 #include <gtest/gtest.h>
-#include "add.h"
+#include "app.h"
 
-TEST(Addition, CanAddTwoPositiveNumbers) {
-  EXPECT_EQ(add(5, 5), 10);
+TEST(BullAndCow1, CAN_USE_SIMILARNUM) {
+    BullAndCow a;
+    bool test;
+    char me[] = { '1','2' };
+    test = a.similarNum(me, 2);
+    EXPECT_EQ(test, false);
 }
-
-TEST(Addition, CanAddTwoNumbersDifferentSign) {
-  EXPECT_EQ(add(-5, 5), 0);
+TEST(BullAndCow2, CAN_USE_SIMILARNUM2) {
+    BullAndCow a;
+    bool test;
+    char me[4] = { '1','2','3','4' };
+    test = a.similarNum(me, 4);
+    EXPECT_EQ(test,false);
 }
-
-TEST(Addition, CanAddTwoNegativeNumbers) {
-  EXPECT_EQ(add(-5, -5), -10);
+TEST(BullAndCow3, CAN_USE_MASSNUM) {
+    BullAndCow a;
+    char me[4] = { '1','2','3' };
+    bool test = 672;
+    a.MassNum(test, me, 3);
+    EXPECT_EQ(test, true);
 }
