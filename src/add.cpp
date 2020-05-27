@@ -1,41 +1,5 @@
-#pragma once
-#include<iostream>
-#include<iomanip>
-#include<fstream>   
-using namespace std;
+#include "add.h"
 
-class Polynom
-{
-private:
-    int high, low;
-public:
-    int n; //степень полинома
-    double* koef; //указатель на массив коэффициентов полинома koef[i] - коэффициент при i-й степени
-    Polynom();
-    Polynom(int an);//конструктор с параметрами
-    Polynom(const Polynom&); //копирования
-    ~Polynom();//деструктор
-    bool operator==(const Polynom& c) {
-        return (low == c.low && high == c.high);
-    }
-    friend bool operator==(const Polynom& c1, const Polynom& c2) {
-        return (c1.low == c2.low && c1.high == c2.high);
-    }
-    int getn(); //функция получения степени полинома
-    double getkoef(int); //функция получения коэффициента при i-й степени
-    Polynom operator+(const Polynom&);   //оператор сложения двух полиномов
-    Polynom operator-(const Polynom&);   //оператор вычитания двух полиномов
-    Polynom operator*(const Polynom&);// оператор умножения
-    Polynom operator=(const Polynom&);   //оператор присваивания
-    Polynom derivative();//производная
-
-    friend ostream& operator<< (ostream& s, const Polynom& c); // перегруженный оператор вывода
-    friend istream& operator >> (istream& s, Polynom& c); // перегруженный оператор ввода
-    double& operator()(int i)
-    {
-        return koef[i];
-    }
-};
 Polynom::Polynom()
 {
     koef = NULL;
@@ -73,17 +37,17 @@ double Polynom::getkoef(int i)
     else
         return 0.0;
 }
-Polynom Polynom::operator-(const Polynom& t) //оператор вычитания А-A
+Polynom Polynom::operator-(const Polynom& t) 
 {
     int i;
-    if (n >= t.n)//А>B
+    if (n >= t.n)
     {
         Polynom Z = *this;
         for (i = 0; i <= t.n; i++)
             Z.koef[i] = koef[i] - t.koef[i];
         return Z;
     }
-    else//B>A
+    else
     {
         Polynom Z(t.n);
         for (i = 0; i <= n; i++)
@@ -93,7 +57,7 @@ Polynom Polynom::operator-(const Polynom& t) //оператор вычитания А-A
         return Z;
     }
 }
-Polynom Polynom::operator+(const Polynom& t)//оператор сложения A+A
+Polynom Polynom::operator+(const Polynom& t)
 {
     int i;
     if (n >= t.n)
@@ -111,7 +75,7 @@ Polynom Polynom::operator+(const Polynom& t)//оператор сложения A+A
         return Z;
     }
 }
-Polynom Polynom::operator*(const Polynom& t)//оператор умножения А*A
+Polynom Polynom::operator*(const Polynom& t)
 {
     int i, j, s = 0;
     Polynom Y(n + t.n);
@@ -132,7 +96,7 @@ Polynom Polynom::operator = (const Polynom& t)
     }
     return *this;
 }
-istream& operator>>(istream& s, Polynom& c)// перегруженный оператор ввода
+istream& operator>>(istream& s, Polynom& c)
 {
     int i;
     for (i = 0; i <= c.n; i++)
@@ -183,7 +147,7 @@ ostream& operator<<(ostream& s, const Polynom& c)
     }
     return s;
 }
-Polynom Polynom::derivative()//производная от А
+Polynom Polynom::derivative()
 {
     int i;
     Polynom Z(n - 1);

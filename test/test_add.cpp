@@ -1,5 +1,5 @@
 #include <gtest/gtest.h>
-#include "polinom.h"
+#include "add.h"
 
 TEST(Polynom, Can_Assignment_Two_Polynoms) {
     Polynom c1(2), c2(3);

@@ -1,7 +1,7 @@
 #include<iostream>
 #include<iomanip>
 #include<fstream>
-#include "Polinom.h"
+#include "add.h"
 using namespace std;
 
 void main()
